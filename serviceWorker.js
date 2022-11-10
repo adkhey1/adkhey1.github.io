@@ -30,3 +30,9 @@ self.addEventListener("fetch", fetchEvent => {
     })
   );
 });
+
+
+navigator.mediaDevices.getUserMedia(constraints);
+stream.getAudioTracks();
+stream.getVideoTracks();
+mediaElement.srcObject = stream

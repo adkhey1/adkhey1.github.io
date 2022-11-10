@@ -16,7 +16,8 @@ function getUserMedia(constraints) {
     }
 }
 
-function getStream (type) {
+
+function getStream(type) {
     if (!navigator.mediaDevices && !navigator.getUserMedia && !navigator.webkitGetUserMedia &&
         !navigator.mozGetUserMedia && !navigator.msGetUserMedia) {
         alert('User Media API not supported.');
@@ -44,4 +45,3 @@ function getStream (type) {
             alert('Error: ' + err);
         });
 }
-
