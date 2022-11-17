@@ -120,16 +120,16 @@ function appendLocation(location, verb) {
     newLocation.innerHTML = 'Location ' + verb + ': ' + location.coords.latitude + ', ' + location.coords.longitude + '';
     target.appendChild(newLocation);
 }
-window.onload=function(){
-    if ('geolocation' in navigator) {
 
-        document.getElementById('askButton').addEventListener('click', function () {
-            navigator.geolocation.getCurrentPosition(function (location) {
-                appendLocation(location, 'fetched');
-            });
-            watchId = navigator.geolocation.watchPosition(appendLocation);
+if ('geolocation' in navigator) {
+
+    document.getElementById('askButton').addEventListener('click', function () {
+        navigator.geolocation.getCurrentPosition(function (location) {
+            appendLocation(location, 'fetched');
         });
-    } else {
-        target.innerText = 'Geolocation API not supported.';
-    }
+        watchId = navigator.geolocation.watchPosition(appendLocation);
+    });
+} else {
+    target.innerText = 'Geolocation API not supported.';
 }
+
