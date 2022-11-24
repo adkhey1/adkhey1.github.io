@@ -176,7 +176,7 @@ function deviceOrientationHandler (eventData) {
                 .then(persisted => {
                     document.getElementById('persisted').innerHTML = persisted ? 'persisted' : 'not persisted';
                 });
-        }
+        };
     }
 }
 
