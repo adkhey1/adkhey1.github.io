@@ -34,9 +34,6 @@
       <div class="container"></div>
     </main>
 
-
-    <script src="js/app.js"></script>
-
     <div class="columns">
       <div class="column">
         <p><button type="button" onclick="getStream('video')">Grab video</button></p>
@@ -81,6 +78,8 @@
     <p>Persistent storage status is <b id="persisted">unknown</b>.</p>
     <p><button onclick="requestPersistence()">Request persistent storage</button></p>
 
+    <br><br>
+
     <p>
       <label>Engine</label>
     </p>
@@ -96,6 +95,8 @@
 
     <p>Open the example in another tab and change the value there to see the synchronization via <code>storage</code> event.</p>
     <div id="target"></div>
+
+    <script src="js/app.js"></script>
 
   </body>
 </html>
