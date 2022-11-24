@@ -205,6 +205,7 @@ function requestPersistence() {
     }
 };
 
+const key = 123;
 let cache = window.caches.open(key)
 cache.put(request, response)
 cache.match(request, option)
