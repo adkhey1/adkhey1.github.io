@@ -177,7 +177,7 @@ function deviceOrientationHandler(eventData) {
                     document.getElementById('persisted').innerHTML = persisted ? 'persisted' : 'not persisted';
                 });
         }
-    }
+    };
 }
 
 if ('storage' in navigator && 'estimate' in navigator.storage) {
