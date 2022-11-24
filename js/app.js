@@ -140,7 +140,7 @@ if ('DeviceOrientationEvent' in window) {
     document.getElementById('logoContainer').innerText = 'Device Orientation API not supported.';
 }
 
-function deviceOrientationHandler (eventData) {
+function deviceOrientationHandler(eventData) {
     var tiltLR = eventData.gamma;
     var tiltFB = eventData.beta;
     var dir = eventData.alpha;
@@ -176,7 +176,7 @@ function deviceOrientationHandler (eventData) {
                 .then(persisted => {
                     document.getElementById('persisted').innerHTML = persisted ? 'persisted' : 'not persisted';
                 });
-        };
-    }
+        }
+    };
 }
 
