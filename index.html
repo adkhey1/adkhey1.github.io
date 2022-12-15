@@ -220,6 +220,11 @@
 
     var balance = 0;
 
+    const all = JSON.parse(localStorage.getItem("jsoncache"));
+    console.log(all);
+    loadTableData(all);
+
+
     function insertData(){
 
         const textfield1 = document.getElementById('text1').value;
@@ -249,6 +254,7 @@
 
 
     function loadTableData(items1) {
+        console.log(items1);
         const table = document.getElementById("testBody");
         items1.forEach( item => {
             let row = table.insertRow();
