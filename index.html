@@ -218,25 +218,30 @@
 </table>
 <script>
 
-
-
+    var balance = 0;
 
     function insertData(){
+
         const textfield1 = document.getElementById('text1').value;
         const textfield2 = document.getElementById('text2').value;
         const textfield3 = document.getElementById('text3').value;
-        const textfield4 = document.getElementById('text4').value;
+        var textfield4 = document.getElementById('text4').value;
 
         items1.push({Description: textfield1, Date: textfield2, Category: textfield3, Amount: textfield4});
         console.log(items1);
         loadTableData(items1);
         loadTableData([]);
+        localStorage['jsoncache'] = JSON.stringify(items1);
+
+        items1.onload = function () {
+            alert("Array is loaded");
+        }
 
     }
 
     const items1 = [
-        { Description: "Testdata", Date:"10/17/2018", Category: "john doe", Amount: 1200},
-        { Description: "TestVersion", Date:"10/17/2016", Category: "john abruzi", Amount: 1600 }
+        {Description: "Testdata", Date:"10/17/2018", Category: "john doe", Amount: 1200},
+        //{ Description: "TestVersion", Date:"10/17/2016", Category: "john abruzi", Amount: 1600}
     ];
 
 
@@ -255,8 +260,9 @@
             category.innerHTML = item.Category;
             let amount = row.insertCell(3);
             amount.innerHTML = item.Amount;
-            let balance = row.insertCell(4);
-            balance = balance + amount;
+            var name23 = row.insertCell(4);
+            balance += +item.Amount;
+            name23.innerHTML = balance;
         });
     }
 
