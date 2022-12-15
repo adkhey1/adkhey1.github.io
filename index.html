@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="en" xmlns:text-align="http://www.w3.org/1999/xhtml">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -20,148 +20,250 @@
     <meta name="apple-mobile-web-app-status-bar" content="#db4938">
     <meta name="theme-color" content="#db4938">
     <title>Dev'Coffee PWA</title>
-  </head>
-  <body>
-    <main>
-      <nav>
+</head>
+<body>
+<main>
+    <nav>
         <h1>Dev'Coffee</h1>
         <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Blog</li>
+            <li>Home</li>
+            <li>About</li>
+            <li>Blog</li>
         </ul>
-      </nav>
-      <div class="container"></div>
-    </main>
+    </nav>
+    <div class="container"></div>
+</main>
 
-    <div class="columns">
-      <div class="column">
-        <p><button type="button" onclick="getStream('video')">Grab video</button></p>
+<div class="columns">
+    <div class="column">
+        <p>
+            <button type="button" onclick="getStream('video')">Grab video</button>
+        </p>
 
         <video controls autoplay style="height:180px; width: 240px;"></video>
-      </div>
-      <div class="column">
-        <p><button type="button" onclick="getStream('audio')">Grab audio</button></p>
+    </div>
+    <div class="column">
+        <p>
+            <button type="button" onclick="getStream('audio')">Grab audio</button>
+        </p>
 
         <audio controls></audio>
-      </div>
     </div>
+</div>
 
-    <button id="askButton">Ask for location</button>
+<button id="askButton">Ask for location</button>
 
-    <div id="target"></div>
+<div id="target"></div>
 
-    <table>
-      <tr>
+<table>
+    <tr>
         <td>Tilt Left/Right [gamma]</td>
         <td id="doTiltLR"></td>
-      </tr>
-      <tr>
+    </tr>
+    <tr>
         <td>Tilt Front/Back [beta]</td>
         <td id="doTiltFB"></td>
-      </tr>
-      <tr>
+    </tr>
+    <tr>
         <td>Direction [alpha]</td>
         <td id="doDirection"></td>
-      </tr>
-    </table>
+    </tr>
+</table>
 
-    <div id="logoContainer">
-      <img src="https://www.w3.org/html/logo/downloads/HTML5_Badge_512.png" id="imgLogo">
-    </div>
+<div id="logoContainer">
+    <img src="https://www.w3.org/html/logo/downloads/HTML5_Badge_512.png" id="imgLogo">
+</div>
 
-    <p><small>Demo from <a href="https://www.html5rocks.com/en/tutorials/device/orientation/" target="_blank" rel="noopener">HTML5 Rocks</a> article.</small></p>
+<p><small>Demo from <a href="https://www.html5rocks.com/en/tutorials/device/orientation/" target="_blank"
+                       rel="noopener">HTML5 Rocks</a> article.</small></p>
 
-    <p>Estimated storage usage is <b id="usage">unknown</b> bytes.</p>
-    <p>Estimated storage quota is <b id="quota">unknown</b> bytes.</p>
-    <p>Estimated usage is <b id="percent">unknown</b>%.</p>
-    <p>Persistent storage status is <b id="persisted">unknown</b>.</p>
-    <p><button onclick="requestPersistence()">Request persistent storage</button></p>
+<p>Estimated storage usage is <b id="usage">unknown</b> bytes.</p>
+<p>Estimated storage quota is <b id="quota">unknown</b> bytes.</p>
+<p>Estimated usage is <b id="percent">unknown</b>%.</p>
+<p>Persistent storage status is <b id="persisted">unknown</b>.</p>
+<p>
+    <button onclick="requestPersistence()">Request persistent storage</button>
+</p>
 
-    <br><br>
+<br><br>
 
-    <p>
-      <button onclick="readContacts()">Read Contacts</button>
-    </p>
+<p>
+    <button onclick="readContacts()">Read Contacts</button>
+</p>
 
-    <pre id="log"></pre>
+<pre id="log"></pre>
 
-    <br><br>
+<br><br>
 
-    <div class="columns">
-      <div class="column">
+<div class="columns">
+    <div class="column">
         <button class="btn-file">
-          Choose some files to read<br>(File API) <input type="file" onchange="readFiles(this.files)" multiple>
+            Choose some files to read<br>(File API) <input type="file" onchange="readFiles(this.files)" multiple>
         </button>
 
         <p>Number of selected files: <b id="count">N/A</b></p>
-      </div>
-      <div class="column">
-        <button class="btn-file" onclick="writeFile()">
-          Choose file to create or overwrite<br>(Native File System API)
-        </button>
-      </div>
     </div>
+    <div class="column">
+        <button class="btn-file" onclick="writeFile()">
+            Choose file to create or overwrite<br>(Native File System API)
+        </button>
+    </div>
+</div>
 
-    <ul id="target"></ul>
+<ul id="target"></ul>
 
-    <p>Current permission status is <b id="status">unavailable</b>.</p>
+<p>Current permission status is <b id="status">unavailable</b>.</p>
 
-    <p><button onclick="requestPermission()">Request permission</button></p>
-    <p><button onclick="nonPersistentNotification()">Non-persistent notification</button></p>
-    <p><button onclick="persistentNotification()">Persistent notification</button></p>
+<p>
+    <button onclick="requestPermission()">Request permission</button>
+</p>
+<p>
+    <button onclick="nonPersistentNotification()">Non-persistent notification</button>
+</p>
+<p>
+    <button onclick="persistentNotification()">Persistent notification</button>
+</p>
 
-    <div>
-      <p>
+<div>
+    <p>
         <b><a href="/geolocation.html">Geolocation</a></b> permission status is <b id="geolocation-status">unknown</b>.
 
         <button onclick="requestGeolocation()">Request</button>
-      </p>
-      <p>
+    </p>
+    <p>
         <b><a href="/local-notifications.html">Notifications</a></b> permission status is <b id="notifications-status">unknown</b>.
 
         <button onclick="requestNotifications()">Request</button>
-      </p>
-      <p>
+    </p>
+    <p>
         <b><a href="/push-notifications.html">Push</a></b> permission status is <b id="push-status">unknown</b>.
 
         <button onclick="requestPush()">Request</button>
-      </p>
-      <p>
+    </p>
+    <p>
         <b>Midi</b> permission status is <b id="midi-status">unknown</b>.
 
         <button onclick="requestMidi()">Request</button>
-      </p>
-      <p>
+    </p>
+    <p>
         <b><a href="/camera-microphone.html">Camera</a></b> permission status is <b id="camera-status">unknown</b>.
 
         <button onclick="requestCamera()">Request</button>
-      </p>
-      <p>
-        <b><a href="/camera-microphone.html">Microphone</a></b> permission status is <b id="microphone-status">unknown</b>.
+    </p>
+    <p>
+        <b><a href="/camera-microphone.html">Microphone</a></b> permission status is <b
+            id="microphone-status">unknown</b>.
 
         <button onclick="requestMicrophone()">Request</button>
-      </p>
-      <p>
+    </p>
+    <p>
         <b><a href="/background-sync.html">Background Sync</a></b> permission status is <b id="background-sync-status">unknown</b>.
-      </p>
-      <p>
-        <b><a href="/ambient-light.html">Ambient Light Sensor</a></b> permission status is <b id="ambient-light-sensor-status">unknown</b>.
-      </p>
-      <p>
-        <b><a href="/device-motion.html">Accelerometer</a></b> permission status is <b id="accelerometer-status">unknown</b>.
-      </p>
-      <p>
+    </p>
+    <p>
+        <b><a href="/ambient-light.html">Ambient Light Sensor</a></b> permission status is <b
+            id="ambient-light-sensor-status">unknown</b>.
+    </p>
+    <p>
+        <b><a href="/device-motion.html">Accelerometer</a></b> permission status is <b
+            id="accelerometer-status">unknown</b>.
+    </p>
+    <p>
         <b><a href="/device-motion.html">Gyroscope</a></b> permission status is <b id="gyroscope-status">unknown</b>.
-      </p>
-      <p>
-        <b><a href="/device-motion.html">Magnetometer</a></b> permission status is <b id="magnetometer-status">unknown</b>.
-      </p>
-    </div>
+    </p>
+    <p>
+        <b><a href="/device-motion.html">Magnetometer</a></b> permission status is <b
+            id="magnetometer-status">unknown</b>.
+    </p>
+</div>
 
-    <p id="logTarget"></p>
+<p id="logTarget"></p>
 
-    <script src="js/app.js"></script>
+<script src="js/app.js"></script>
 
-  </body>
+
+<br><br><br><br><br>
+
+
+<table id="tblTest" class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Description</th>
+        <th scope="col">Date</th>
+        <th scope="col">Category</th>
+        <th scope="col">Amount</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th><input type="string" id="text1"></th>
+        <td><input type="string" id="text2"></td>
+        <td><input type="string" id="text3"></td>
+        <td><input type="int" id="text4"></td>
+        <td><input type="submit" name="Submit" value="Submit" onclick="insertData()"/></td>
+    </tr>
+    </tbody>
+</table>
+
+<table id="myTable" class="table table-borderless table-striped table-earning">
+    <thead>
+    <tr>
+        <th scope="col">Description</th>
+        <th scope="col">Date</th>
+        <th scope="col">Category</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Balance</th>
+    </tr>
+    </thead>
+    <tbody id="testBody"></tbody>
+</table>
+<script>
+
+
+
+
+    function insertData(){
+        const textfield1 = document.getElementById('text1').value;
+        const textfield2 = document.getElementById('text2').value;
+        const textfield3 = document.getElementById('text3').value;
+        const textfield4 = document.getElementById('text4').value;
+
+        items1.push({Description: textfield1, Date: textfield2, Category: textfield3, Amount: textfield4});
+        console.log(items1);
+        loadTableData(items1);
+        loadTableData([]);
+
+    }
+
+    const items1 = [
+        { Description: "Testdata", Date:"10/17/2018", Category: "john doe", Amount: 1200},
+        { Description: "TestVersion", Date:"10/17/2016", Category: "john abruzi", Amount: 1600 }
+    ];
+
+
+
+
+
+    function loadTableData(items1) {
+        const table = document.getElementById("testBody");
+        items1.forEach( item => {
+            let row = table.insertRow();
+            let description = row.insertCell(0);
+            description.innerHTML = item.Description;
+            let date = row.insertCell(1);
+            date.innerHTML = item.Date;
+            let category = row.insertCell(2);
+            category.innerHTML = item.Category;
+            let amount = row.insertCell(3);
+            amount.innerHTML = item.Amount;
+            let balance = row.insertCell(4);
+            balance = balance + amount;
+        });
+    }
+
+
+
+</script>
+
+
+</body>
 </html>

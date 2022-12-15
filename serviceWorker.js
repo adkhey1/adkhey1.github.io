@@ -1,4 +1,5 @@
 const staticDevCoffee = "dev-coffee-site-v1";
+const staticCosts = "tblTest"
 const assets = [
   "/",
   "/index.html",
@@ -28,6 +29,14 @@ self.addEventListener("fetch", fetchEvent => {
     caches.match(fetchEvent.request).then(res => {
       return res || fetch(fetchEvent.request);
     })
+  );
+});
+
+self.addEventListener("install", installEvent => {
+  installEvent.waitUntil(
+      caches.open("tblTest").then(cache => {
+        cache.addAll(assets);
+      })
   );
 });
 
