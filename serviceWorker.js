@@ -16,6 +16,8 @@ const assets = [
   "/images/coffee9.jpg"
 ];
 
+
+// Save files to cache for offline use (Service Worker Install)
 self.addEventListener("install", installEvent => {
   installEvent.waitUntil(
     caches.open(staticDevCoffee).then(cache => {
@@ -24,6 +26,7 @@ self.addEventListener("install", installEvent => {
   );
 });
 
+// Fetch files from cache for offline use (Service Worker Fetch)
 self.addEventListener("fetch", fetchEvent => {
   fetchEvent.respondWith(
     caches.match(fetchEvent.request).then(res => {
@@ -32,6 +35,7 @@ self.addEventListener("fetch", fetchEvent => {
   );
 });
 
+// Delete old caches (Service Worker Activate)
 self.addEventListener("install", installEvent => {
   installEvent.waitUntil(
       caches.open("tblTest").then(cache => {

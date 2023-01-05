@@ -52,6 +52,8 @@ const showCoffees = () => {
     container.innerHTML = output;
 };
 
+
+//register service worker
 document.addEventListener("DOMContentLoaded", showCoffees);
 
 if ("serviceWorker" in navigator) {
